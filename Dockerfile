@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.14-slim
 
 WORKDIR /app
 
@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN git clone https://github.com/streamlit/streamlit-example.git .
 
+RUN test -e requirements.txt || touch requirements.txt
 RUN pip3 install -r requirements.txt
 
 EXPOSE 8501
